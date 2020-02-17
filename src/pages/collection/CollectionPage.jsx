@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectionItem from '../../components/collection-item/CollectionItem';
+import { default as CollectionItem } from '../../components/collection-item/CollectionItemContainer';
 import './CollectionPage.scss';
 
 const CollectionPage = ({ collection }) => {

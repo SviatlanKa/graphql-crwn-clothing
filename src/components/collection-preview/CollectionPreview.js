@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import CollectionItem from '../collection-item/CollectionItem';
+import { default as CollectionItem } from '../collection-item/CollectionItemContainer';
 
 import './CollectionPreview.scss';
 

@@ -5,11 +5,8 @@ import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-boost';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './redux/store';
 import { typeDefs, resolvers } from "./graphql/resolvers";
-import App from './App';
+import { default as App} from './AppContainer';
 import './index.css';
 
 const httpLink = createHttpLink({
@@ -28,19 +25,18 @@ const client = new ApolloClient({
 client.writeData({
     data: {
         cartHidden: true,
-        cartItems: []
+        cartItems: [],
+        itemsCount: 0,
+        cartTotal: 0,
+        currentUser: null
     }
 });
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-      <Provider store={store}>
         <BrowserRouter>
-          <PersistGate persistor={persistor}>
             <App />
-          </PersistGate>
         </BrowserRouter>
-      </Provider>
     </ApolloProvider>,
   document.getElementById('root')
 );
